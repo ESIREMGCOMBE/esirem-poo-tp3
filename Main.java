@@ -31,7 +31,11 @@ public static void main(String[] args){
   
    Deck d1=new Deck();
     d1.generer();
-    System.out.println("cartes dans le deck:" + d1.montre_main());
+    System.out.println("cartes dans le deck trié:" + d1.montre_main());
+    d1.melanger();
+    System.out.println("cartes dans le deck mélangé:" + d1.montre_main());
 }
 }
+
+
 
