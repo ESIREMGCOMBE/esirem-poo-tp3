@@ -52,11 +52,12 @@ public String montre_main(){
             if (!c.face_visible) { // si une carte n'est pas retournée     
                 toutes_visibles = false; 
         }
-        // calcul la valeur de la main si toutes les cartes sont retournées
-        if(toutes_visibles){
-            chain = chain + " Nombre points:" + calc_points() + "\n";
-        }
+
     }
+            // calcul la valeur de la main si toutes les cartes sont retournées
+            if(toutes_visibles){
+                chain = chain + " Nombre points:" + calc_points() + "\n";
+            }
     return chain;
 
 }
@@ -77,6 +78,9 @@ public boolean donne_carte(Carte carte, Main_joueur main_banque){
         return true;
     }
 }
+}
+
+
 }
 
 
