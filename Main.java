@@ -17,7 +17,7 @@ public class Main {
         deck.generer();
         deck.melanger();
 
-        while ((credit_joueur > 10) && (boucle_manche==true)) { // Pour le moment,la mise est de 10 crédits
+        while ((credit_joueur > 10) && boucle_manche) { // Pour le moment,la mise est de 10 crédits
 
             credit_joueur = credit_joueur - 10; // Le joueur paye sa mise
 
@@ -119,25 +119,23 @@ public class Main {
                 }
             }
 
-            System.out.println(
-                    "\n Il vous reste  " + credit_joueur + " crédits, voulez-vous continuer(1) ou arréter (0) ?");
-            choix_joueur = scanner.nextInt();
-            switch (choix_continue) {
-                case 0: // le joueur décide d'arréter
-                    continue_manche = false;
-                    System.out.println("FIN DE PARTIE.");
-                    break;
-                case 1: // le joueur décide de refaire une manche
-                    continue_manche = true;
+        }
+        System.out
+                .println("\n Il vous reste  " + credit_joueur + " crédits, voulez-vous continuer(1) ou arréter (0) ?");
+        choix_joueur = scanner.nextInt();
+        switch (choix_continue) {
+            case 0: // le joueur décide d'arréter
+                continue_manche = false;
+                System.out.println("FIN DE PARTIE.");
+                break;
+            case 1: // le joueur décide de refaire une manche
+                continue_manche = true;
 
-                    break;
-                default:
-                    System.out.println("Action invalide. Veuillez choisir une action valide.");
-                    scanner.close();
-            }
-        } // switch (choix_continue) {
-    } // ferme linge 3 / public static void main(String[] args) {
+                break;
+            default:
+                System.out.println("Action invalide. Veuillez choisir une action valide.");
+                scanner.close();
+        }
+    }
 
-} // ferme ligne 2 / public class Main {
-
-
+}
