@@ -49,9 +49,7 @@ public String montre_main(){
         boolean toutes_visibles = true;
         for (Carte c: cartes){
             chain = chain + c.affiche_carte() + "\n";
-            if (!c.face_visible) { // si une carte n'est pas retournée     
-                toutes_visibles = false; 
-        }
+
 
     }
             // calcul la valeur de la main si toutes les cartes sont retournées
@@ -61,12 +59,7 @@ public String montre_main(){
     return chain;
 
 }
-public void retourne_cartes(){
-    for (Carte c: cartes){
-        c.retourne_carte();
-    }
 
-}
 
 public boolean donne_carte(Carte carte, Main_joueur main_banque){
     if(!cartes.contains(carte)){ //si la carte n'existe pas
@@ -78,11 +71,8 @@ public boolean donne_carte(Carte carte, Main_joueur main_banque){
         return true;
     }
 }
-}
-
 
 }
-
 
 
 
