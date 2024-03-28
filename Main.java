@@ -1,16 +1,9 @@
-
+import java.util.Scanner;
 public class Main {
-    public enum choix_joueur{
-        CARTE, ARRETER, DOUBLE, ABANDONNER, ASSURANCE;
-    };
-  
+    
+ 
 
-    /*Lors d’un tour de blackjack, le joueur a différents choix :
-- Carte ou Hit, quand le joueur décide de tirer des cartes
-- S’arrêter ou Stand, quand le joueur décide d’utiliser ses cartes actuelles
-- Double, quand le joueur décide de tirer une unique carte et d’utiliser les cartes obtenues
-- Abandonner ou Surrend, quand le joueur décide d’abandonner le tour en échange de la moitié de sa mise 
-
+    /*
 Logique de jeu
 Réalisez les éléments nécessaires, en utilisant vos fonctions, afin de réaliser votre jeu de blackjack. Pour le moment,
 la mise est de 10 crédits, et le joueur démarre à 100 crédits. Aucune mise supplémentaire n’est possible en-dehors
@@ -35,18 +28,23 @@ o Les joueurs ayant plus de points que le croupier gagnent une fois leur mise.
     public static void main(String[] args) {
         // Génération et mélange du deck
         
+        Scanner scanner = new Scanner(System.in);
+        int choix_joueur = 0;
+        boolean continue_manche = true;
         
         Deck deck = new Deck();
         deck.generer();
         deck.melanger();
         boolean assurance_possible = false;
+        boolean assurance_prise = false;
+
         // Création des 2 joueurs
         Main_joueur J1 = new Main_joueur();
         Main_joueur BANK = new Main_joueur();
 
         // Distribution de 2 cartes au joueur
         deck.distribuer(J1, 2);
-        
+  
         // Montre la main du joueur
         System.out.println("Main du joueur: ");
         System.out.println(J1.montre_main());
@@ -61,22 +59,41 @@ System.out.println("Première carte du croupier: "+ BANK.montre_carte());
 if(BANK.montre_carte().startsWith("As")){
     // Le croupier a un As comme première carte, on peut proposer une assurance aux joueurs
     assurance_possible = true;
-    System.out.println("assurance_possible");       
+     
 
     }
     // le croupier tire une seconde carte
 deck.distribuer(BANK, 1);
 System.out.println("Seconde carte du croupier non visible");
 
-if(assurance_possible==true){
-    System.out.println("Choix joueur : (1) Carte, (2) Arreter, (3) Assurance");
-}
-else
-{
-    System.out.println("Choix joueur : (1) Carte, (2) Arreter");
+    System.out.println("Choisissez une action : (1) Tirer une carte, (2) S'arrêter");
+    if(assurance_possible==true){
+        System.out.println("\n Le croupier a dèjà un As, vou spouvre également choisir (3)l' Assurance");
+            }
+
+    choix_joueur = scanner.nextInt();
+    switch (choix_joueur) {
+        case 1: // Hit, le joueur prend une carte supplementaire
+            deck.distribuer(J1, 1);
+            System.out.println("Main du joueur: ");
+            System.out.println(J1.montre_main());
+            break;
+        case 2: // Stand, le joueur décide d’utiliser ses cartes actuelles
+            continue_manche = true;
+            break;
+        case 3: // Assurance
+        continue_manche = true;
+        assurance_prise = true;
+        break;
+        default:
+            System.out.println("Action invalide. Veuillez choisir une action valide.");
+    }
+
+
 }
    
 
 }
 
-}
+
+
