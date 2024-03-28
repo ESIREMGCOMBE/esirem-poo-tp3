@@ -10,14 +10,14 @@ public class Main {
         int credit_joueur = 100; // le joueur démarre à 100 crédits
 
         boolean continue_manche = true;
-        boolean boucle_manche = true;
+        boolean nouvelle_manche = true;
 
         Deck deck = new Deck();
 
         deck.generer();
         deck.melanger();
 
-        while ((credit_joueur > 10) && boucle_manche) { // Pour le moment,la mise est de 10 crédits
+        while ((credit_joueur > 10) && nouvelle_manche) { // Pour le moment,la mise est de 10 crédits
 
             credit_joueur = credit_joueur - 10; // Le joueur paye sa mise
 
@@ -35,7 +35,7 @@ public class Main {
             System.out.println("Main du joueur: ");
             System.out.println(J1.montre_main());
 
-            // le croupier tire une carte
+            // le croupier tire une carte2
             deck.distribuer(BANK, 1);
 
             // Montrez cette carte
@@ -50,8 +50,9 @@ public class Main {
             }
             // le croupier tire une seconde carte non visible par le joueur
             deck.distribuer(BANK, 1);
+            continue_manche = true; // pour pouvoir parcourrir la boucle à nouveau après la 1ère manche
 
-            while (continue_manche == true) { // boucle de choix du joueur
+            while (continue_manche == true && J1.calc_points() <= 21) { // boucle de choix du joueur
                 System.out.println("Choisissez une action : (1) Tirer une carte, (2) S'arrêter");
                 if (assurance_possible == true) {
                     System.out.println("\n Le croupier a dèjà un As, vous pouvez également choisir (3)l' Assurance");
@@ -60,13 +61,12 @@ public class Main {
                 choix_joueur = scanner.nextInt();
                 switch (choix_joueur) {
                     case 1: // Hit, le joueur prend une carte supplementaire
+
                         deck.distribuer(J1, 1);
                         System.out.println("Main du joueur: ");
-                        System.out.println(J1.montre_main());
-                        if (J1.calc_points() > 21) {
-                            continue_manche = false;
-                        }
+                        System.out.println(J1.montre_main());                        
                         break;
+                    
                     case 2: // Stand, le joueur décide d’utiliser ses cartes actuelles
                         continue_manche = false;
                         break;
@@ -122,11 +122,11 @@ public class Main {
             choix_continue = scanner.nextInt();
             switch (choix_continue) {
                 case 0: // le joueur décide d'arréter
-                    boucle_manche  = false;
+                    nouvelle_manche  = false;
                     System.out.println("FIN DE PARTIE.");
                     break;
                 case 1: // le joueur décide de refaire une manche
-                    boucle_manche  = true;
+                    nouvelle_manche  = true;
     
                     break;
                 default:
