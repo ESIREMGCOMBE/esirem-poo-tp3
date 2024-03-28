@@ -1,3 +1,8 @@
+Info deadline : la partie MVP ne sera plus modifiée après le 28/03 à 23h. Elle pourra par al suite être considérée comme en version définitive.
+
+
+__________________________________________________________________________________________________________________________________________________________________________________
+Archives Algorithme projet C
 # esirem-poo-tp3
 ## Algorithme
 
