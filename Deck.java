@@ -6,13 +6,11 @@ import java.util.Random;
 public class Deck extends Main_joueur {
 Random rand = new Random(); // initialisation générateur de nombres aléatoires pour la méthode melanger()
 int tailledeck = 52;
-
 //methode pour créer le deck
 public void generer(){
 for(Couleur couleur: Couleur.values()){
     for(Valeur valeur: Valeur.values()){
         Carte carte = new Carte(valeur,couleur);
-        carte.retourne_carte();
         this.tire_carte(carte);
 
     }
@@ -37,13 +35,20 @@ public void  distribuer(Main_joueur J1, int NbCartes){
     }
 
 }
-// retourner cartes
-public void retourne_carte(Carte c){    
-        c.retourne_carte();
-    
-}
 
 }
+
+
+ 
+
+
+
+
+
+
+    
+
+
 
 
  
