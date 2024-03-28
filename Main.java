@@ -35,11 +35,11 @@ o Les joueurs ayant plus de points que le croupier gagnent une fois leur mise.
     public static void main(String[] args) {
         // Génération et mélange du deck
         
-        boolean assurance_possible = false;
+        
         Deck deck = new Deck();
         deck.generer();
         deck.melanger();
-        
+        boolean assurance_possible = false;
         // Création des 2 joueurs
         Main_joueur J1 = new Main_joueur();
         Main_joueur BANK = new Main_joueur();
@@ -61,17 +61,22 @@ System.out.println("Première carte du croupier: "+ BANK.montre_carte());
 if(BANK.montre_carte().startsWith("As")){
     // Le croupier a un As comme première carte, on peut proposer une assurance aux joueurs
     assurance_possible = true;
-    System.out.println("assurance_possible");
-
-    
-
-
-
-        
+    System.out.println("assurance_possible");       
 
     }
+    // le croupier tire une seconde carte
+deck.distribuer(BANK, 1);
+System.out.println("Seconde carte du croupier non visible");
+
+if(assurance_possible==true){
+    System.out.println("Choix joueur : (1) Carte, (2) Arreter, (3) Assurance");
+}
+else
+{
+    System.out.println("Choix joueur : (1) Carte, (2) Arreter");
+}
+   
 
 }
+
 }
-
-
