@@ -4,14 +4,10 @@ public class Carte {
 
     private Valeur valeur; //enum Valeur
     private Couleur couleur; //enum Couleur
-    public boolean face_visible;
-
-
     // Constructeur
     public Carte(Valeur valeur,Couleur couleur){
         this.couleur = couleur;
         this.valeur = valeur;
-        face_visible  = false;
     }
 
     // Méthodes
@@ -45,11 +41,6 @@ public class Carte {
         return couleur.get_couleur();
         
     }
-
-    public void retourne_carte(){
-        face_visible = !face_visible ;
-    }
-
     public String affiche_carte(){
         String chain="";
 
