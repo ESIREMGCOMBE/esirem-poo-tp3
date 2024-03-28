@@ -118,24 +118,23 @@ public class Main {
                     System.out.println("La banque gagne, crédit joueur:" + credit_joueur);
                 }
             }
-
+            System.out.println("\n Il vous reste  " + credit_joueur + " crédits, voulez-vous continuer(1) ou arréter (0) ?");
+            choix_continue = scanner.nextInt();
+            switch (choix_continue) {
+                case 0: // le joueur décide d'arréter
+                    boucle_manche  = false;
+                    System.out.println("FIN DE PARTIE.");
+                    break;
+                case 1: // le joueur décide de refaire une manche
+                    boucle_manche  = true;
+    
+                    break;
+                default:
+                    System.out.println("Action invalide. Veuillez choisir une action valide.");
+                    scanner.close();
+            }
         }
-        System.out
-                .println("\n Il vous reste  " + credit_joueur + " crédits, voulez-vous continuer(1) ou arréter (0) ?");
-        choix_joueur = scanner.nextInt();
-        switch (choix_continue) {
-            case 0: // le joueur décide d'arréter
-                continue_manche = false;
-                System.out.println("FIN DE PARTIE.");
-                break;
-            case 1: // le joueur décide de refaire une manche
-                continue_manche = true;
 
-                break;
-            default:
-                System.out.println("Action invalide. Veuillez choisir une action valide.");
-                scanner.close();
-        }
     }
 
 }
